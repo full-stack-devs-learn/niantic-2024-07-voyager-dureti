@@ -51,17 +51,32 @@ public class Main
         // Variable name: name
         // Data Type: string (names/words are strings)
 
+        String firstName = "Dureti";
+        String lastName = "Shemsi";
+
+        System.out.println();
+        System.out.println("1) First Name: " + firstName + " &" + " Last Name: " + lastName);
 
 
         // 2. Declare a variable to hold your age.
         // Variable name: age
         // Data Type: int (age is a whole number)
 
+        int age = 25;
+
+        System.out.println();
+        System.out.println("2) Age: " + age);
+
 
 
         // 3. Declare a variable that holds the first 5 digits of PI.
         // Variable name: pi
         // Data Type: double (pi is a number with decimal places)
+
+        double fiveDigitsOfPi = 3.1415;
+
+        System.out.println();
+        System.out.println("3) The first five digits of pi: " + fiveDigitsOfPi);
 
 
 
@@ -70,8 +85,10 @@ public class Main
         // Variable name: price
         // Data Type: double (price contains a dollar and cent value)
 
-        // NOTE: the decimal data type  is not automatically recognized
-        // see lecture notes
+        double priceOfAdultMeal = 5.68;
+
+        System.out.println();
+        System.out.println("4) The price of adult meal is $" + priceOfAdultMeal);
     }
 
     public static void section02()
@@ -98,6 +115,11 @@ public class Main
         // Hint: You cannot use the same variable name
         // as a variable that you have used before.
 
+        String nameOfFavoriteSuperhero = "Black Panther";
+
+        System.out.println();
+        System.out.println("5) My favorite super hero is: " + nameOfFavoriteSuperhero);
+
 
 
         // 6. Declare a variable to hold the value of
@@ -105,11 +127,21 @@ public class Main
         // questions and each question is worth 1 point.
         // (You can choose the score)
 
+        int testScore = 97;
+
+        System.out.println();
+        System.out.println("6) The test score is: " + testScore + " out of 100");
+
 
 
         // 7. Declare a variable that holds the current
         // population in the United States.
         // (search what the population is today)
+
+        long currentUSPopulation = 336800857L;
+
+        System.out.println();
+        System.out.println("7) The current US population is: " + currentUSPopulation);
 
 
 
@@ -117,16 +149,33 @@ public class Main
         // population in China.
         // (search what the population is today)
 
+        long currentChinaPopulation = 1425146494L;
+
+        System.out.println();
+        System.out.println("8) The current population of China is: " + currentChinaPopulation);
+
+
 
 
         // 9. Declare a variable that holds the current
         // population in the world.
         // (search what the population is today)
 
+        long currentWorldPopulation = 8123704030L;
+
+        System.out.println();
+        System.out.println("9) The current world population is: " + currentWorldPopulation);
+
+
 
 
         // 10. Declare a variable that specifies whether
         // or not your mouse is wireless.
+
+        boolean isWireless = true;
+
+        System.out.println();
+        System.out.println("10) Is my mouse is wireless: " + isWireless);
 
 
 
@@ -134,10 +183,21 @@ public class Main
         // home town are. Then declare 2 variables
         // to store the Latitude and Longitude.
 
+        double myHomeLatitude = 47.53;
+        double myHomeLongitude = -122.36;
+
+        System.out.println();
+        System.out.println("11) My home latitude is: " + myHomeLatitude + " and" +  " My home longitude is: " + myHomeLongitude);
+
 
 
         // 12. Create a variable that holds the current
         // Microsoft stock price.
+
+        double microsoftStockPrice = 444.85;
+
+        System.out.println();
+        System.out.println("12) Current Microsoft stock price is: " + microsoftStockPrice);
     }
     
     public static void section03()
@@ -175,6 +235,16 @@ public class Main
 
         // How many shots did Pete take?
 
+        int madeShots = 7;
+        int missedShots = 3;
+
+        // calculate total shots
+
+        int totalShots = madeShots + missedShots;
+
+        System.out.println();
+        System.out.println("13) Pete took a total of: " + totalShots + " shots" );
+
 
 
         // 14. In his previous basketball game Pete took 20 shots.
@@ -182,12 +252,38 @@ public class Main
 
         // How many 2 point shots did Pete make?\
 
+        int peteTotalShots = 20;
+        int peteMissedShots = 6;
+        int peteThreePointShots = 3;
+
+        // calculate number of made shots
+
+        int peteMadeShots = peteTotalShots - peteMissedShots;
+
+        // calculate number of 2 point shots
+
+        int peteTwoPointShots = peteMadeShots - peteThreePointShots;
+
+        // print 2 point shots Pete make
+
+        System.out.println();
+        System.out.println("14) Pete made " + peteTwoPointShots + " shots" + " in his previous basketball game");
+
 
 
         // 15. Pete and Pat are teammates. Pete made 6 shots.
         // Pat made twice as many shots as Pete.
 
         // How many total shots did they make?
+
+        int peteShots = 6;
+        int patShots = 2 * peteShots;
+
+        // calculate total shots made by both
+        int totalShotsByBoth = peteShots + patShots;
+
+        System.out.println();
+        System.out.println("15) Total shots made by both Pete and Pat is: " + totalShotsByBoth + " shots");
 
 
 
@@ -197,12 +293,37 @@ public class Main
         // did the Terrifying Twosome make in the game?
 
 
+        int shotsByPete = 13;
+        int shotsByPat = 9;
+
+        // increment extra shot made by 1
+
+        shotsByPete = shotsByPete + 1;
+        shotsByPat = shotsByPat + 1;
+
+        //calculate total shots combined
+         int shotsTotal = shotsByPete + shotsByPat;
+
+        System.out.println();
+        System.out.println("16) Total shots made by both including extra shot made before game ended: " + shotsTotal + " shots");
+
+
 
         // 17. In his last game Pete made 11 shots.
         // he missed 4 shots.
 
         // What percentage of his shots did he make?
 
+        int peteSuccessShots = 11;
+        int peteLossShots = 4;
+
+        // calculate percentage of success shots
+
+        int totalPeteShots = peteSuccessShots + peteLossShots;
+        double successPercentage = ((double)peteSuccessShots/ totalPeteShots)* 100;
+
+        System.out.println();
+        System.out.println("17) Pete percentage of made/success shots: " + successPercentage + "%");
 
 
 
@@ -214,6 +335,27 @@ public class Main
 
         // How many shots do Pete and Pat have to take to win
         // this game?
+
+        double shootingPercentage = 0.70;
+        int opponentShots = 31;
+        int pointsNeededPerShot = 3;
+
+        // calculate minimum points needed to win
+
+        int minPointsNeeded = opponentShots + 1;
+
+        // calculate number of successful shots
+
+        int successfulShotsMade = (int) Math.ceil((double)minPointsNeeded / pointsNeededPerShot);
+
+        //  calculate total shots
+
+        int totalShotsNeeded = (int) Math.ceil((double) successfulShotsMade / shootingPercentage);
+
+        System.out.println();
+        System.out.println("18) Pete and Pat needed to take: " + totalShotsNeeded + " to win");
+
+
     }
     
     public static void clairesCookies()
@@ -235,6 +377,20 @@ public class Main
         // his students. How many cookies will each student
         // receive? (Students can only receive whole cookies)
 
+        int numberOfStudents = 14;
+        int cookiesSoldByClaire = 12;
+        int cookiesBoughtBySean = 3 * cookiesSoldByClaire;
+
+        // calculate number of cookies each student receive
+
+        int cookiesPerStudent = cookiesBoughtBySean / numberOfStudents;
+
+        System.out.println();
+        System.out.println(" 19) Cookies per each students ");
+        System.out.println(" Total number of cookies:      " + cookiesBoughtBySean + " cookies");
+        System.out.println(" Total number of students:     " + numberOfStudents +    " students");
+        System.out.println(" Each student will receive:    " + cookiesPerStudent +   " cookies");
+
 
 
         // 20. Sean has 14 students in his class.
@@ -244,6 +400,24 @@ public class Main
         // his students. After giving the students their
         // cookies, how many cookies will be left over?
 
+        int totalStudents = 14;
+        int dozenCookies = 12;
+        int totalCookies = 3 * dozenCookies;
+
+        // calculate number of cookies each student receive
+
+        int cookiesPerEachStudent = totalCookies/totalStudents;
+
+        // calculate number of cookies left over
+
+        int cookiesLeftOver = totalCookies % totalStudents;
+
+        System.out.println();
+        System.out.println(" 20) Cookies left over calculation");
+        System.out.println(" Total cookies:            " + totalCookies          + " cookies");
+        System.out.println(" Total Number of students: " + totalStudents         + " students");
+        System.out.println(" Cookies per student:      " + cookiesPerEachStudent + " cookies");
+        System.out.println(" Cookies left over:        " + cookiesLeftOver       + " cookies");
 
 
         // 21. Sean's class has earned a cookie party.
@@ -251,6 +425,22 @@ public class Main
         // If Sean has 14 students, how many dozen cookies
         // does he need to buy from Claire's Cookies so that
         // each student can receive 3 cookies.
+
+        int studentNumberTotal = 14;
+        int numberOfCookiesPerStudent = 3;
+        int  cookiesInDozen= 12;
+
+        // calculate cookies Sean need to buy in dozen
+
+        int totalNumberOfCookies = numberOfCookiesPerStudent * studentNumberTotal;
+
+        // convert total number of cookies to dozen
+
+        int dozenCookiesToBuy = (int) Math.ceil((double)totalNumberOfCookies / cookiesInDozen);
+
+        System.out.println();
+        System.out.println(" 21) Sean needs to buy: " + dozenCookiesToBuy + " dozen of cookies from Claire");
+
 
 
 
