@@ -21,7 +21,26 @@ public class ElliotsYardCare
      */
     public double  calculateCost(int width, int length, boolean  isTrimming)
     {
-        return 0;
+        // variable for cost by 1000 sq ft
+        double costWithOutTrimming = 2.50;
+        double costWithTrimming = 3.00;
+        double sizeInSquareFeet = 1000;
+
+        // initialize variable for size in yard
+        double sizeInYard;
+
+        // calculate the yard size based on weather trimmed or not.
+        if(isTrimming){
+            sizeInYard = (width * length * costWithTrimming)/sizeInSquareFeet;
+        }
+
+        else{
+            sizeInYard = (width * length * costWithOutTrimming)/sizeInSquareFeet;
+        }
+
+        return sizeInYard;
+
+
     }
 
     /*
@@ -41,7 +60,17 @@ public class ElliotsYardCare
      */
     public double  calculateProfit(int width, int length, boolean  isTrimming, int amountCharged)
     {
-        return 0;
+        // calculate total cost based on previous information in calculate cost function
+        double totalCost = calculateCost(width, length, isTrimming);
+
+        // calculate to profit amount
+        double profitAmount = amountCharged - totalCost;
+
+        // return the result
+        return profitAmount;
+
+
+
     }
 
     /*
@@ -62,10 +91,28 @@ public class ElliotsYardCare
      */
     public double calculateTime(int width, int length, boolean  isTrimming)
     {
-        return 0;
+        // declare variable for time per 1000 sq ft in MINUTES
+
+        double timeWhenMowing = 30.0;
+        double timeWhenTrimming = 45.0;
+
+        // calculate area
+        int area = width * length;
+
+        // calculate time it takes when only mowing the lawn
+        double timeTaken;
+        if(isTrimming){
+            timeTaken = (((area / 1000.0) * timeWhenTrimming) /60.0);
+        }
+        else {
+            timeTaken = (((area / 1000.0) * timeWhenMowing) /60.0);
+        }
+
+        return timeTaken;
+
     }
 
-    /*
+    ;/*
      * Elliot needs to earn at least $10 / hour on each job
      *
      * You need to calculate how much Elliott should charge
@@ -93,6 +140,10 @@ public class ElliotsYardCare
      */
     public double  calculatePrice(int width, int length, boolean  isTrimming)
     {
+        // double minCharge = 25.0;
+
+        // calculate area of the yard
+        //int area = width * length;
         return 0;
     }
 }

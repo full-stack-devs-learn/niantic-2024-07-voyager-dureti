@@ -1,5 +1,6 @@
 package com.niantic;
 
+
 public class BackyardBasketball
 {
     /*
@@ -24,7 +25,14 @@ public class BackyardBasketball
      */
     public int calculateWinningPercentage(int gamesWon, int gamesLost)
     {
-        return 0;
+        // calculate total games played
+        int totalGames = gamesWon + gamesLost;
+
+        // calculate the winning percentage
+        double winningPercentage = ((double)gamesWon/totalGames)*100;
+
+        // return the result as integer
+        return (int)winningPercentage;
     }
 
 
@@ -41,10 +49,27 @@ public class BackyardBasketball
      * calculatePointsScored(67, 15, false) -> 20
      *
      */
-    public int calculatePointsScored(int shotPercentage, int shotsTaken, boolean isThree)
-    {
-        return 0;
+    public int calculatePointsScored(int shotPercentage, int shotsTaken, boolean isThree) {
+
+        // find shots made by the player
+
+        double shotsMade = (shotPercentage / 100.0) * shotsTaken;
+
+        // declare variable to find the number of point scored
+        int pointsScored;
+
+        // check weather player made 3 or 2 point score, and calculate the point based on that
+
+        if (isThree) {
+            pointsScored = (int) shotsMade * 3;
+        } else {
+            pointsScored = (int) shotsMade * 2;
+        }
+
+        return pointsScored;
+
     }
+
 
 
     /*
@@ -69,6 +94,20 @@ public class BackyardBasketball
      */
     public int calculateShotsRequired(int shotPercentage, int desiredScore, boolean isThree)
     {
-        return 0;
+        // calculate shots per point
+        double shotsPerPoint = (100.0 / shotPercentage);
+
+        double minShotsRequired;
+
+
+        if(isThree){
+            minShotsRequired = shotsPerPoint * (desiredScore/3.0);
+        }
+
+        else{
+            minShotsRequired = shotsPerPoint * (desiredScore/2.0);
+        }
+
+        return (int) Math.ceil (minShotsRequired);
     }
 }

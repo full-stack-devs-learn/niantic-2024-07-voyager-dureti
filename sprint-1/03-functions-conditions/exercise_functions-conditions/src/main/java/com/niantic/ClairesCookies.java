@@ -3,7 +3,7 @@ package com.niantic;
 public class ClairesCookies
 {
     @SuppressWarnings("unused") 
-    private final double TaxRate = .0575;
+    private final double Tax_Rate = .0575;
 
     /*
      * Claire's cookies cost $12.95 a dozen.
@@ -21,7 +21,13 @@ public class ClairesCookies
      */
     public double calculateSubtotal(int quantity)
     {
-        return 0;
+        // cost of dozen cookies
+        double dozenCookiesCost = 12.95;
+
+        // calculate total cost per quantity and return result
+
+        return (dozenCookiesCost * quantity);
+
     }
 
     /*
@@ -34,7 +40,7 @@ public class ClairesCookies
      * of how many dozen cookies they want to order.
      *
      * The calculateTotal function should calculate
-     * the price of an order BEFORE the cost of tax
+     * the price of an order AFTER the cost of tax
      * is added.
      *
      * calculateTotal(1) -> 13.69
@@ -43,7 +49,21 @@ public class ClairesCookies
      */
     public double calculateTotal(int quantity)
     {
-        return 0;
+        // cost of a dozen of cookies
+
+        double dozenCookiesCost = 12.95;
+
+        // calculate total cost of cookie without tax
+
+        double costWithOutTax =  quantity * dozenCookiesCost;
+
+        // calculate tax for the total cost
+        double taxCost = costWithOutTax * Tax_Rate;
+
+        // return the result by adding the tax and total cost without tax
+
+        return costWithOutTax + taxCost;
+
     }
 
     /*
@@ -75,7 +95,21 @@ public class ClairesCookies
      */
     public double calculateQuickOrder(int snickerDozen, int chocolateDozen, int frostedDozen)
     {
-        return 0;
+        double snickerDoodlesCost = 12.95;
+        double chocolateChipCost = 13.95;
+        double frostedChocolateChpCost = 15.95;
+
+        // calculate totalCost of the cookie
+
+        double totalCost = (snickerDoodlesCost*snickerDozen) + (chocolateChipCost * chocolateDozen) +
+                (frostedChocolateChpCost * frostedDozen);
+
+        // calculate the tax for the total cost
+
+        double taxAmount = totalCost * Tax_Rate;
+
+        // return the result by adding the tax to the total cost
+        return totalCost + taxAmount;
     }
 
 
@@ -103,7 +137,37 @@ public class ClairesCookies
      */
     public double calculateCustomOrder (int quantity, boolean hasChocolateChips, boolean hasFrosting)
     {
-        return 0;
+
+       double baseCookiesCost = 12.95;
+       double chocolateChipsCost = 1.00;
+       double frostingCost = 2.00;
+
+
+       // variable to return after calculating everything
+       double finalCost;
+
+       // calculate final cost based on extra ingredient cost
+
+       if(hasChocolateChips && hasFrosting){
+           finalCost = (quantity* baseCookiesCost) + quantity *(chocolateChipsCost + frostingCost);
+       }
+       else if (hasChocolateChips){
+           finalCost = (quantity * baseCookiesCost) + quantity* (chocolateChipsCost);
+
+       } else if (hasFrosting) {
+           finalCost = (quantity * baseCookiesCost) + quantity * (frostingCost);
+       }
+       else{
+
+           finalCost = quantity * baseCookiesCost;
+       }
+
+       // find the tax amount for the final cost
+
+        double taxRate = Tax_Rate * finalCost;
+
+       // add the final cost and the tax amount, return the result
+       return finalCost + taxRate;
     }
 
 }
