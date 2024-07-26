@@ -101,11 +101,11 @@ public class BackyardBasketball
 
 
         if(isThree){
-            minShotsRequired = shotsPerPoint * (desiredScore/3.0);
+            minShotsRequired = shotsPerPoint * Math. ceil(desiredScore/3.0);
         }
 
         else{
-            minShotsRequired = shotsPerPoint * (desiredScore/2.0);
+            minShotsRequired = shotsPerPoint * Math.ceil (desiredScore/2.0);
         }
 
         return (int) Math.ceil (minShotsRequired);
