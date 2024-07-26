@@ -18,14 +18,16 @@ public class ExercisesChallenge
      * sumFirst2Numbers([])              =>  0
      */
     public int sumFirst2Numbers(int[] numbers) {
+
         int sumFirst2Numbers = 0;
+
         if (numbers.length >= 2) {
             sumFirst2Numbers = numbers[0] + numbers[1];
+
         } else if (numbers.length == 1) {
             sumFirst2Numbers = numbers[0];
         }
             return sumFirst2Numbers;
-
     }
 
     /*
@@ -38,10 +40,10 @@ public class ExercisesChallenge
      */
     public String[] reverseNames(String[] names)
     {
+
         String [] reverseNames = new String[names.length];
 
         int reversedNamesCount = 0;
-
 
         for (int i = names.length-1; i>=0;i--) {
             reverseNames[reversedNamesCount] = (names[i]);
@@ -78,6 +80,24 @@ public class ExercisesChallenge
      */
     public int[] combineArrays(int[][] numbers)
     {
-        return null;
+        // calculate total number of elements in the array
+        int totalSize = 0;
+        for (int i = 0; i < numbers.length; i++) {
+            totalSize+=numbers[i].length;
+        }
+
+        // create single dimensional array from the total
+        int[] newArray = new int[totalSize];
+
+        // copy element from multi-dimensional array to single dimensional array
+
+        int index = 0;
+        for (int i = 0; i < numbers.length; i++) {
+            for (int j = 0; j < numbers[i].length; j++) {
+                newArray[index++] = numbers[i][j];
+            }
+
+        }
+        return  newArray;
     }
 }
