@@ -2,19 +2,15 @@ package com.niantic;
 
 import java.util.Scanner;
 
-public class Main
-{
+public class Main {
     private static Scanner userInput = new Scanner(System.in);
     private static int[] scores = new int[0];
 
-    public static void main(String[] args)
-    {
-        while(true)
-        {
+    public static void main(String[] args) {
+        while (true) {
             int choice = getHomeSelection();
 
-            switch(choice)
-            {
+            switch (choice) {
                 case 1:
                     createNewTestScores();
                     break;
@@ -38,8 +34,7 @@ public class Main
         }
     }
 
-    public static int getHomeSelection()
-    {
+    public static int getHomeSelection() {
         System.out.println();
         System.out.println("Welcome to <<Enter app name>>!");
         System.out.println("------------------------------");
@@ -55,23 +50,71 @@ public class Main
         return Integer.parseInt(userInput.nextLine());
     }
 
-    private static void createNewTestScores()
-    {
+    private static void createNewTestScores() {
         System.out.println("Enter code to create a new array and ask for test scores");
+
+
+        // Ask the user for test scores
+        System.out.print("Enter the number of test scores: ");
+        int numberOfScores = Integer.parseInt(userInput.nextLine());
+
+        // Create an array to store the test scores
+        scores = new int[numberOfScores];
+
+        // Prompt the user to enter each test score
+        System.out.println(" Enter the test score: ");
+
+        for (int i = 0; i < numberOfScores; i++) {
+            System.out.print("Score " + (i + 1) + ": ");
+            scores[i] = Integer.parseInt(userInput.nextLine());
+        }
+
+        // Display the entered test scores
+        System.out.println("The entered test scores are:");
+        for (int score : scores) {
+            System.out.print(score + " ");
+        }
     }
 
-    private static void calculateAverage()
-    {
+    private static void calculateAverage() {
         System.out.println("Add logic to calculate the average of all test scores, and display it");
+
+        int sum = 0;
+        for (int score : scores) {
+            sum += score;
+        }
+        // calculate average of all test score
+        double scoreAverage = (double) sum / scores.length;
+        System.out.println();
+
+        // display the average of all scores
+        System.out.println("Average of all test scores is: " + scoreAverage);
     }
+
 
     private static void findHighestScore()
     {
         System.out.println("Find the highest score of all tests and display it");
+
+        int highestScore = scores[0];
+        for (int i = 0; i < scores.length; i++) {
+            if (scores[i] > highestScore) {
+                highestScore = scores[i];
+            }
+        }
+        System.out.println("The highest score is: " + highestScore);
     }
 
     private static void findLowestScore()
     {
         System.out.println("Find the lowest score of all tests and display it");
+
+        int lowestScore = scores[0];
+        for (int i = 0; i < scores.length; i++) {
+            if (scores[i] < lowestScore) {
+                lowestScore = scores[i];
+            }
+        }
+        System.out.println("The lowest score is: " + lowestScore);
     }
 }
