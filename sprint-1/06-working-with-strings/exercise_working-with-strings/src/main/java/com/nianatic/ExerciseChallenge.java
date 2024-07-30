@@ -26,7 +26,8 @@ public class ExerciseChallenge
      */
     public String reformatName(String fullName)
     {
-        return null;
+        return
+
     }
 
     /*
@@ -50,7 +51,7 @@ public class ExerciseChallenge
      */
     public String createJSON(int id, String name)
     {
-        return  null;
+        return null;
     }
 
 }

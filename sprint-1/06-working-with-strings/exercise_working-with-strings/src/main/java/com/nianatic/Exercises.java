@@ -1,7 +1,6 @@
 package com.nianatic;
 
-public class Exercises
-{
+public class Exercises {
     /*
      * In this function you need to convert a word
      * either to all upper case letters or all
@@ -16,9 +15,13 @@ public class Exercises
      * changeCase("PARTY", true) => PARTY
      *
      */
-    public String changeCase(String word, boolean toUpperCase)
-    {
-        return null;
+    public String changeCase(String word, boolean toUpperCase) {
+        if (toUpperCase) {
+            return word.toUpperCase();
+        } else {
+            return word.toLowerCase();
+        }
+
     }
 
     /*
@@ -47,9 +50,11 @@ public class Exercises
      * createHtml("Bold text", "strong") => <strong>Bold text</strong>
      *
      */
-    public String createHtml(String content, String elementName)
-    {
-        return null;
+    public String createHtml(String content, String elementName) {
+        String openingTag = "<" + elementName + ">";
+        String closingTag = "</" + elementName + ">";
+        String formattedHTML = openingTag + content + closingTag;
+        return formattedHTML;
     }
 
     /*
@@ -69,9 +74,11 @@ public class Exercises
      * moreHtml("", "p") => <p />
      *
      */
-    public String moreHtml(String content, String elementName)
-    {
-        return null;
+    public String moreHtml(String content, String elementName) {
+        if (content == null || content.isEmpty()) {
+            return "<" + elementName + " />";
+        }
+        return "<" + elementName + ">" + content + "</" + elementName + ">";
     }
 
     /*
@@ -92,9 +99,8 @@ public class Exercises
      * createXml(1, "Belinda Carter") => <customer><id>1</id><name>Belinda Carter</name></customer>
      *
      */
-    public String createXml(int id, String name)
-    {
-        return  null;
+    public String createXml(int id, String name) {
+        return String.format("<customer><id>%d</id><name>%s</name></customer>", id, name);
     }
 
     /*
@@ -129,9 +135,9 @@ public class Exercises
      *                                      </customer>
      *
      */
-    public String formattedXml(int id, String name)
-    {
-        return null;
+    public String formattedXml(int id, String name) {
+
+        return String.format("<customer>\n  <id>%d</id>\n  <name>%s</name>\n</customer>", id, name);
     }
 
     /*
@@ -153,9 +159,25 @@ public class Exercises
      * formatFullName("Glen", "Carter", "Williamson", "Jr") => Glen Carter Williamson, Jr
      *
      */
-    public String formatFullName(String firstName, String middleName, String lastName, String suffix)
-    {
-        return  null;
+    public String formatFullName(String firstName, String middleName, String lastName, String suffix) {
+        String fullName;
+
+        if (middleName.isEmpty() && suffix.isEmpty()) {
+            // No middle name, no suffix
+            fullName = firstName + " " + lastName;
+        } else if (middleName.isEmpty()) {
+            // No middle name, but has suffix
+            fullName = firstName + " " + lastName + ", " + suffix;
+        } else if (suffix.isEmpty()) {
+            // Has middle name, no suffix
+            fullName = firstName + " " + middleName + " " + lastName;
+        } else {
+            // Has middle name and suffix
+            fullName = firstName + " " + middleName + " " + lastName + ", " + suffix;
+        }
+
+        return fullName;
+
     }
 
     /*
@@ -184,8 +206,38 @@ public class Exercises
      * createUserName("Glen Williamson, III") => glen.williamson
      *
      */
-    public String createUserName(String fullName)
-    {
-        return null;
+    public String createUserName(String fullName) {
+
+        // Strip any leading or trailing whitespace and convert to lower case
+        String lowerCaseFullName = fullName.strip().toLowerCase();
+
+        // Split the full name by comma to remove any suffix like "III"
+        String[] fullNameParts = lowerCaseFullName.split(",");
+        String nameOnly = fullNameParts[0].strip();
+
+        // Split the name parts by spaces
+        String[] names = nameOnly.split(" ");
+        String firstName = names[0];
+        String middleName = "";
+        String lastName = "";
+
+        if (names.length == 2) {
+            // If there are only two names
+            lastName = names[1];
+        } else if (names.length == 3) {
+            // If there are three names
+            middleName = names[1].substring(0, 1);
+            lastName = names[2];
+        }
+
+        // Create the username
+        String userName;
+        if (middleName.isEmpty()) {
+            userName = firstName + "." + lastName;
+        } else {
+            userName = firstName + "." + middleName + "." + lastName;
+        }
+
+        return userName;
     }
 }
