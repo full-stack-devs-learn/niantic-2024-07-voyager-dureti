@@ -13,3 +13,16 @@ USE northwind;
 
 -- Expected: 12 Rows
 
+SELECT company_name
+	, order_date
+    , order_id
+    , product_name
+    , sales_price
+	, quantity
+    , discount
+    , (sales_price * Quantity * (1 - Discount / 100)) AS LineTotal
+FROM customer_orders
+WHERE Company_name = 'Alfreds Futterkiste';
+
+
+
