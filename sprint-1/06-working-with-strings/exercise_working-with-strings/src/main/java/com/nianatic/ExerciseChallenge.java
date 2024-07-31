@@ -26,7 +26,7 @@ public class ExerciseChallenge
      */
     public String reformatName(String fullName)
     {
-        return
+        return null;
 
     }
 

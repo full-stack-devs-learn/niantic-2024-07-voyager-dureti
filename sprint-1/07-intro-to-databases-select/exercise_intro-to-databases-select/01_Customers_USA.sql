@@ -7,4 +7,4 @@ SELECT company_name
 	, city
     , country
 FROM customers
-LIMIT 13;
+WHERE country = 'USA'
