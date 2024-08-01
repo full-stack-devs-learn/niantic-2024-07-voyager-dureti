@@ -11,3 +11,36 @@ USE northwind;
     -- home address
 -- leave all other fields null by default
 
+INSERT INTO employees
+(
+    first_name
+    , last_name
+    , title
+    , title_of_courtesy
+	, birth_date
+    , hire_date
+    , address
+    , city
+    , region
+    , postal_code
+    , country
+    , notes
+)
+VALUES
+(
+    'Dureti'
+    , 'Shemsi'
+    , 'Student'
+    , 'Ms.'
+    , '1998-07-23'
+    , '2024-07-31'
+    , '1234 Elm Street'
+    , 'Seattle'
+    , 'WA'
+    , 98144
+    , 'USA'
+    , ''
+);
+
+
+    
