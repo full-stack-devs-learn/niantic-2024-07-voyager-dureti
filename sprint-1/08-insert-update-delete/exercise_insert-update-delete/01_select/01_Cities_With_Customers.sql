@@ -9,3 +9,4 @@ SELECT DISTINCT country
 	, city
 FROM customers
 ORDER BY country, city;
+

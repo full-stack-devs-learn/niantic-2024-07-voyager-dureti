@@ -25,3 +25,5 @@ VALUES
     ('Fishing Rod', @new_id, 59.99, 20, 0, 10),
     ('Kayak', @new_id, 499.99, 20, 0, 10),
     ('Mountain Bike', @new_id, 599.99, 20, 0, 10);
+    
+    
