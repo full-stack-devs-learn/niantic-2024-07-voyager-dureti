@@ -15,15 +15,15 @@ GROUP BY
     , categories.category_name
 ORDER BY 
     month 
-    ,categories.category_name;
+    , categories.category_name;
     
 
 -- Housing expenses - by Month
 
 SELECT
-    DATE_FORMAT(t.transaction_date, '%Y-%m') AS month,
-    c.category_name,
-    SUM(t.transaction_amount) AS total_amount
+    DATE_FORMAT(t.transaction_date, '%Y-%m') AS month
+    , c.category_name
+    , SUM(t.transaction_amount) AS total_amount
 FROM 
     transactions t
 INNER JOIN 
@@ -33,8 +33,8 @@ INNER JOIN
 WHERE 
     c.category_name = 'Housing'
 GROUP BY 
-    DATE_FORMAT(t.transaction_date, '%Y-%m'),
-    c.category_name
+    DATE_FORMAT(t.transaction_date, '%Y-%m')
+    , c.category_name
 ORDER BY 
     month;
 
