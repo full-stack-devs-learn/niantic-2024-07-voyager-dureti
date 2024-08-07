@@ -4,6 +4,7 @@ import com.niantic.models.TestScore;
 
 import java.util.ArrayList;
 
+
 public class TestScores
 {
 
@@ -13,8 +14,18 @@ public class TestScores
         requested tests.
      */
     public ArrayList<TestScore> getScoresByTest(ArrayList<TestScore> testScores, String testName)
+
     {
-        return null;
+        ArrayList<TestScore> scoresByTest = new ArrayList<>();
+
+        for (TestScore score : testScores) {
+            if (score.getTestName().equals(testName)) {
+                scoresByTest.add(score);
+            }
+        }
+
+        return scoresByTest;
+
     }
 
     /*
@@ -24,7 +35,16 @@ public class TestScores
      */
     public ArrayList<TestScore> getScoresByStudent(ArrayList<TestScore> testScores, String student)
     {
-        return null;
+        ArrayList<TestScore> scoresByStudent = new ArrayList<>();
+
+        for (TestScore score : testScores) {
+            if (score.getStudentName().equals(student)) {
+                scoresByStudent.add(score);
+            }
+        }
+
+        return scoresByStudent;
+
     }
 
     /*
