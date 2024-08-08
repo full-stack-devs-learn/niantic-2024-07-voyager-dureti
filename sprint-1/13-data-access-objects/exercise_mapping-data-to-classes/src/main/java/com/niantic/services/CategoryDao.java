@@ -65,6 +65,23 @@ public class CategoryDao
      */
     public Category getCategoryById(int categoryId)
     {
+        String sql = """
+                SELECT category_id
+                    , category_name
+                    , description
+                FROM categories
+                WHERE category_id = ?;
+                """;
+        var row = jdbcTemplate.queryForRowSet(sql, categoryId);
+
+        if(row.next())
+        {
+            int id = row.getInt("category_id");
+            String categoryName = row.getString("category_name");
+            String description = row.getString("description");
+
+            return new Category(id, categoryName, description);
+        }
         return null;
     }
 
@@ -75,6 +92,18 @@ public class CategoryDao
      */
     public void addCategory(Category category)
     {
+        String sql = """
+                    INSERT INTO categories
+                    (category_name
+                    , description)
+                    VALUES
+                    (?, ?);
+                """;
+
+        jdbcTemplate.update(sql,
+                            category.getCategoryName(),
+                            category.getDescription()
+        );
     }
 
     /*
@@ -82,8 +111,19 @@ public class CategoryDao
     modify all values (except the category_id)
     for the specified category
      */
-    public void updateCategory(Category category)
-    {
+    public void updateCategory(Category category) {
+        String sql = """
+                    UPDATE categories
+                    SET category_name = ?
+                        , description = ?
+                    WHERE category_id = ?;
+                """;
+
+        jdbcTemplate.update(sql,
+                category.getCategoryName(),
+                category.getDescription(),
+                category.getCategoryId()
+        );
     }
 
     /*
@@ -92,6 +132,9 @@ public class CategoryDao
      */
     public void deleteCategory(int categoryId)
     {
+        String sql = "DELETE FROM categories WHERE category_id = ?;";
+
+        jdbcTemplate.update(sql, categoryId);
     }
 
 
