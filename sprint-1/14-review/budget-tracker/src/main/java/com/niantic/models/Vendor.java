@@ -2,24 +2,32 @@ package com.niantic.models;
 
 public class Vendor
 {
-    private int vendor_id;
-    private String vendor_name;
+    private int vendorId;
+    private String vendorName;
     private String website;
 
     public Vendor(){}
 
-    public Vendor(int vendor_id, String vendor_name, String website) {
-        this.vendor_id = vendor_id;
-        this.vendor_name = vendor_name;
+    public Vendor(int vendorId, String vendorName, String website) {
+        this.vendorId = vendorId;
+        this.vendorName = vendorName;
         this.website = website;
     }
 
-    public int getVendor_id() {
-        return vendor_id;
+    public int getVendorId() {
+        return vendorId;
     }
 
-    public void setVendor_id(int vendor_id) {
-        this.vendor_id = vendor_id;
+    public void setVendorId(int vendorId) {
+        this.vendorId = vendorId;
+    }
+
+    public String getVendorName() {
+        return vendorName;
+    }
+
+    public void setVendorName(String vendorName) {
+        this.vendorName = vendorName;
     }
 
     public String getWebsite() {
@@ -28,13 +36,5 @@ public class Vendor
 
     public void setWebsite(String website) {
         this.website = website;
-    }
-
-    public String getVendor_name() {
-        return vendor_name;
-    }
-
-    public void setVendor_name(String vendor_name) {
-        this.vendor_name = vendor_name;
     }
 }
