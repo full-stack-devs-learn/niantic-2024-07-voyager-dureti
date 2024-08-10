@@ -1,5 +1,6 @@
 package com.niantic.application;
 
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class BudgetTracker
@@ -63,6 +64,17 @@ public class BudgetTracker
 
         System.out.print("Enter an option: ");
         return Integer.parseInt(userInput.nextLine());
+    }
+
+    private void addTransaction()
+    {
+        System.out.println();
+        System.out.println("Add Transaction");
+        System.out.println("-".repeat(100));
+
+        BigDecimal amount =
+
+
     }
 
 
