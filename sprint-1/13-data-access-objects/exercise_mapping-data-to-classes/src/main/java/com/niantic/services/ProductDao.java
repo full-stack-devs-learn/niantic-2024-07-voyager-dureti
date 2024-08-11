@@ -120,6 +120,7 @@ public class ProductDao
                     VALUES
                     (?, ?,?,?,?,?,?);
                 """;
+
         jdbcTemplate.update(sql
                            , product.getCategoryId()
                            , product.getProductName()

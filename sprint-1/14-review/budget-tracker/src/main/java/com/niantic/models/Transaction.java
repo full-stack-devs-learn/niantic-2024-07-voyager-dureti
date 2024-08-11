@@ -60,9 +60,8 @@ public class Transaction {
         return amount;
     }
 
-    public void setAmount(double amount) {
-        this.amount = BigDecimal.valueOf(amount);
-    }
+    public void setAmount(BigDecimal amount) {this.amount = amount;}
+
 
     public LocalDate getTransactionDate() {
         return transactionDate;
