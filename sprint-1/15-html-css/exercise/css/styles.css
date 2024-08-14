@@ -15,7 +15,7 @@ body {
     display: flex;
     justify-content: space-between; 
     align-items: center;
-    width: 100%;
+    width: 100%;    
     max-width: 1000px; 
 }
 
@@ -38,12 +38,17 @@ body {
 }
 
 .order-button {
-    background-color: #D81E3E;
     color: #fff;
     padding: 10px 20px;
     border: none;
     cursor: pointer;
     font-weight: 700;
+
+    display: inline-block;
+    background-color: #ba1d24;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
 }
 
 
@@ -93,9 +98,8 @@ body {
 }
 
 .banner-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    width: 100%;  
+    height: auto;
 }
 
 .banner-text {
@@ -231,6 +235,7 @@ body {
     flex: 1;
     min-width: 200px;
     margin: 10px;
+    display: inline-block;
 }
 
 .footer-section ul {
@@ -266,7 +271,7 @@ body {
 }
 
 .footer-section img {
-    width: 120px;
+    width: 40px;
     margin: 0 10px;
 }
 
@@ -291,7 +296,8 @@ body {
     text-decoration: underline;
 }
 
-/* Checkout page */
+/* Checkout page CSS */
+
 
 .checkout-header {
     display: flex;
@@ -348,5 +354,295 @@ body {
     height: 20px;
     width: 20px;
     margin-right: 8px;
-    vertical-align: middle;
+    vertical-align: baseline;
+}
+.checkout-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 50px auto 50px 10%; 
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 20px;
+    box-sizing: border-box;
+}
+
+.card {
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #e1e1e1;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+
+.user-info-card {
+    margin-bottom: 20px;
+
+}
+
+
+.handoff-container {
+    padding: 20px;
+}
+
+.handoff-title {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 10px;
+}
+
+.pickup-details h3 {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 8px;
+    
+}
+
+.pickup-address p {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333;
+}
+
+.highlight {
+    background-color: #d8d8d8;
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+.pickup-time {
+    margin-top: 20px;
+}
+
+.time-selection {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Payment Card Styles */
+ 
+.payment-card {
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #e1e1e1;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.payment-methods {
+    margin-bottom: 15px;
+    justify-content: center;
+}
+
+.payment-methods label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+}
+
+.payment-methods input[type="radio"] {
+    margin-right: 10 px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #e1e1e1;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.payment-details {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.payment-details input {
+    flex: 1;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f7;
+}
+
+.apply-payment-btn {
+    display: inline-block;
+    padding: 5px 40px;
+    background-color: #ba1d24;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 500px;;
+}
+
+.place-order-btn {
+    width: 33%;
+    padding: 15px;
+    background-color: #ba1d24;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 40px;
+    margin-left: 250px;
+    margin-top: -10px;
+}
+
+
+
+/* Media Queries for General Styles */
+
+/* For devices with a maximum width of 1024px */
+@media only screen and (max-width: 1024px) {
+    .header, .checkout-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .banner-text h1 {
+        font-size: 36px;
+    }
+
+    .banner-text p {
+        font-size: 18px;
+    }
+
+    .pizza-item {
+        width: 45%;
+    }
+
+    .checkout-container {
+        width: 90%;
+        margin-left: 5%;
+    }
+
+    .apply-payment-btn {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .place-order-btn {
+        width: 100%;
+        margin-left: 0;
+    }
+}
+
+/* For devices with a maximum width of 768px */
+@media only screen and (max-width: 768px) {
+    .header, .checkout-header {
+        padding: 10px;
+    }
+
+    .logo img, .checkout-logo {
+        height: 40px;
+    }
+
+    .banner-text h1 {
+        font-size: 28px;
+    }
+
+    .banner-text p {
+        font-size: 16px;
+    }
+
+    .banner-button {
+        padding: 10px 20px;
+        margin: 0 5px;
+    }
+
+    .pizza-item {
+        width: 90%;
+        margin-bottom: 20px;
+    }
+
+    .footer-top {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-section {
+        margin: 20px 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .checkout-container {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .apply-payment-btn, .place-order-btn {
+        width: 100%;
+        margin-left: 0;
+    }
+}
+
+/* For devices with a maximum width of 480px */
+@media only screen and (max-width: 480px) {
+    .nav a, .dropbtn {
+        font-size: 14px;
+        margin-right: 10px;
+    }
+
+    .order-button {
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+
+    .banner-text h1 {
+        font-size: 24px;
+    }
+
+    .banner-text p {
+        font-size: 14px;
+    }
+
+    .banner-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .banner-button {
+        padding: 8px 15px;
+        margin-bottom: 10px;
+    }
+
+    .pizza-item {
+        width: 100%;
+    }
+
+    .checkout-container {
+        width: 100%;
+        margin-left: 0;
+        padding: 10px;
+    }
+
+    .payment-details {
+        flex-direction: column;
+    }
+
+    .apply-payment-btn, .place-order-btn {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
 }

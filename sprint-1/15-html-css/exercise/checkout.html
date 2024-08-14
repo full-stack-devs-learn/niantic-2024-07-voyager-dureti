@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout| MOD Pizza</title>
-        <link rel="stylesheet" href="./css/styles.css">
+    <title>Checkout | MOD Pizza</title>
+    <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
     <header class="checkout-header">
@@ -23,7 +23,108 @@
             </a>
         </div>
     </header>
-                
+    <div>
+        <h1 style="font-family: 'Montserrat'; font-size: 36px; margin-left: 250px; margin-top: 40px;">Checkout</h1>
+    </div>
+        <div class="checkout-container">
+            <div class="card user-info-card">
+                <h2>Your Information</h2>
+                <p>By signing in, I agree to the MOD Pizza Terms and Conditions <a href="#">View here</a></p>
+                <div class="user-details">
+                    <p><strong>John Deo</strong></p>
+                    <p>na@mail.com</p>
+                    <p>(206) 777-7777</p>
+                    <a href="#" class="edit-info">Edit Your Info</a>
+                </div>
+            </div>
+            <div class="card handoff-container">
+                <h2 class="handoff-title">Handoff Details</h2>
+                <div class="pickup-details">
+                    <div class="pickup-address">
+                        <h3>Pickup Address</h3>
+                        <p><span class="highlight">Westwood Village</span><br>
+                        2800 SW Barton St, Seattle, WA 98126<br>
+                        (206) 415-9675</p>
+                    </div>
+                    <div class="pickup-time">
+                        <h3>Pickup Time</h3>
+                        <div class="time-selection">
+                            <select>
+                                <option value="tue-aug-13">Tue, Aug 13</option>
+                            </select>
+                            <input type="time" value="10:45">
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Payment Info -->
+            <div class="card payment-card">
+                <h2>Payment Info</h2>
+                <div class="payment-methods">
+                    <label>
+                        <input type="radio" name="payment" value="gift-card">
+                        Gift Card
+                    </label>
+                    <label>
+                        <input type="radio" name="payment" value="new-card" checked>
+                        New Card
+                    </label>
+                </div>
+                <div class="payment-details">
+                    <input type="text" placeholder="Card Number">
+                    <input type="text" placeholder="Exp. MM/YY">
+                    <input type="text" placeholder="CVV">
+                    <input type="text" placeholder="Zip">
+                </div>
+                <button class="apply-payment-btn">Apply Payment</button>
+            </div>
+        </div>
+    
+    <!-- Place Order Button -->
+    <button class="place-order-btn">PLACE ORDER</button>
 
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-section">
+                <ul>
+                    <li><a href="#">Allergen Info</a></li>
+                    <li><a href="#">Nutrition</li>
+                    <li><a href="#">Faqs</a></li>
+                    <li><a href="#">Gift Cards</a></li>
+                    <li><a href="#">Restraunt Directory</a></li>
+                </ul>
+            </div>
+            <div class="footer-section footer-info-links">
+                <ul>
+                    <li><a href="#">MOD News</a></li>
+                    <li><a href="#">Press</a></li>
+                    <li><a href="#">Franchising</a></li>
+                    <li><a href="#">Real Estate</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <p>Get the MOD Rewards App</p>
+                <a href="#"><img src="./images/app-store-apple.webp" alt="App Store"></a>
+                <a href="#"><img src="./images/google-play.webp" alt="Google Play"></a>
+            </div>
+            <div class="footer-section">
+                <p>Follow Us</p>
+                <a href="#"><img src="./images/facebook.png" alt="Facebook"></a>
+                <a href="#"><img src="./images/twitter.png" alt="Twitter"></a>
+                <a href="#"><img src="./images/instagram.png" alt="Instagram"></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 MOD Super Fast Pizza, LLC.</p>
+            <div class="legal-links">
+                <a href="#">Privacy</a>
+                <a href="#">Terms of Use</a>
+                <a href="#">Multi-State Privacy Rights</a>
+                <a href="#">Your Privacy Choices</a>
+            </div>
+        </div>
+    </footer>
+    
 </body>
 </html>
