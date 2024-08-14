@@ -146,6 +146,7 @@ public class ProductDao
                 , units_in_stock = ?
                 , units_on_order = ?
                 , reorder_level = ?
+                WHERE product_id = ?
                 """;
 
         jdbcTemplate.update(sql
