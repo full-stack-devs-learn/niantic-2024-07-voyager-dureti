@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
 <head>
     <meta charset="UTF-8">
     <title>All Categories</title>
@@ -13,23 +13,23 @@
 <body>
 <div th:replace="fragments/header.html :: nav"></div>
 <main class="container mt-4">
-    <h4>Categories</h4>
-
-    <a th:href="@{/categories/new}">New</a>
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Category</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="category : ${categories}">
-            <td th:text="${category.categoryId}"></td>
-            <td><a th:text="${category.categoryName}" th:href="@{|/categories/${category.categoryId}|}"></a></td>
-        </tr>
-        </tbody>
-    </table>
+    <div>
+        <h4>Category Details</h4>
+        <table class="table table-striped">
+            <tr>
+                <td>ID</td>
+                <td th:text="${category.categoryId}"></td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td th:text="${category.categoryName}"></td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td th:text="${category.description}"></td>
+            </tr>
+        </table>
+    </div>
 </main>
 </body>
 </html>
