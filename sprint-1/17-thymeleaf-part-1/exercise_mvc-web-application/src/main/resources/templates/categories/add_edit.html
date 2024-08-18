@@ -15,25 +15,23 @@
 <main class="container mt-4">
     <h4>Categories</h4>
 
-    <a th:href="@{/categories/add}" class="btn btn-primary">+ Add new category</a>
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Category</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="category : ${categories}">
-            <td th:text="${category.categoryId}"></td>
-            <td><a th:text="${category.categoryName}" th:href="@{|/categories/${category.categoryId}|}"></a></td>
-            <td>
-                <a th:href="@{|/categories/${category.categoryId}/edit|}" class="btn btn-warning">Edit</a>
-                <a th:href="@{|/categories/${category.categoryId}/delete|}" class="btn btn-danger">Delete</a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+    <h1 th:if ="${action} == 'add'"> Add Category </h1>
+    <h1 th:if ="${action} == 'edit'"> Edit Category </h1>
+
+    <form action ="#" th:object= "${category}" method = "post">
+        <div class ="form-floating mb-3">
+            <input class="form-control" type="text" th:field ="*{categoryName}">
+            <label th:for="*{categoryName}">Category name</label>
+        </div>
+
+        <div class ="form-floating mb-3">
+            <input class="form-control" type="text" th:field ="*{description}">
+            <label th:for="*{description}">Description</label>
+        </div>
+
+
+        <input class ="btn btn-success" type = "Submit" value = "Save">
+    </form>
 </main>
 </body>
 </html>
