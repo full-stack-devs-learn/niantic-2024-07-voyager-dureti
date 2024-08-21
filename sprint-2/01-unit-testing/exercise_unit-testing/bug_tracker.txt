@@ -6,32 +6,40 @@ Class: Rectangle
 
         Describe the bug/error:
 
-        Where was the bug? (function, line number)
+        -- getArea() method does not handle cases where the width or height is zero or negative
+
+        Where was the bug? (function, line number):
+
+        -- getArea() method, starting at line 40-42
 
         What test helped you find the bug?
 
+        --etArea_shouldReturn_zeroWhenWidthIsNegative()
+
         What did you do to fix the bug?
+
+        --added a conditional statement to getArea() method to check if either width or height is zero or less.
+        If this condition is met, the method now correctly returns 0
 
     Bug 2:
 
         Describe the bug/error:
 
-        Where was the bug? (function, line number)
-
-        What test helped you find the bug?
-
-        What did you do to fix the bug?
-
-    Bug 3:
-
-        Describe the bug/error:
+        -- getPerimeter() is incorrectly calculating the perimeter of the rectangle.
+        It returns the sum of width and height, but the correct formula for the perimeter of a rectangle is
+        2 * (width + height).
 
         Where was the bug? (function, line number)
 
+        -- getPerimeter() method, line 55 the return statement
+
         What test helped you find the bug?
+
+        -- getPerimeter_shouldReturn_twoTimesTheSumOfWidthAndLength()
 
         What did you do to fix the bug?
 
+        -- update the return statement in the getPerimeter() method to return 2 * (width + height) instead of width + height
 
 
 
@@ -41,21 +49,123 @@ Class: Quiz
 
         Describe the bug/error:
 
+        -- getPercent() not correctly calculating the percentage as it is always returning zero
+
         Where was the bug? (function, line number)
+
+        -- method getPercent() is supposed to return a percentage, but the return type of the method is int.
+        The calculation inside getPercent() involves dividing score by possiblePoints, both of which are integers.
+        This will result in integer division, potentially losing the fractional part of the percentage.
 
         What test helped you find the bug?
 
+        -- getPercent_shouldReturn_correctPercentage_WhenScoreIsPositive_AndPossiblePointsIsPositive()
+
         What did you do to fix the bug?
+
+        --  cast the score or possiblePoints to double before performing the division
+            and after cast it back to int to return the percentage as an integer value.
 
     Bug 2:
 
         Describe the bug/error:
+        -- getPercent() does not handle the case where score might be less than 0
 
         Where was the bug? (function, line number)
 
+        -- getPercent() method line 28-31
+
         What test helped you find the bug?
 
+        -- getPercent_shouldReturn_zeroWhenScoreIsNegative()
+
         What did you do to fix the bug?
+
+        -- added a condition at the beginning of the getPercent() method to check if score is negative to returns 0
+
+    Bug 3:
+
+            Describe the bug/error:
+            -- getPercent() does not handle the case where possiblePoints might be less than 0
+
+            Where was the bug? (function, line number)
+
+            -- getPercent() method line 28-31
+
+            What test helped you find the bug?
+            getPercent_shouldReturn_zeroWhenPossiblePointsIsNegative()
+
+            What did you do to fix the bug?
+            -- added a condition at the beginning of the getPercent() method to check if possiblePoints is negative to returns 0
+    Bug 4:
+
+            Describe the bug/error:
+
+            -- getLetterGrade() method incorrectly returns "B" when score is 90 and possiblePoints set to 100
+
+            Where was the bug? (function, line number)
+
+            -- getLetterGrade() method line 38 if statement
+
+            What test helped you find the bug?
+
+            -- getLetterGrade_shouldReturn_A_WhenPercentIs90_OrGreater()
+
+            What did you do to fix the bug?
+
+            -- modified the condition in the getLetterGrade() method to use >= instead of >
+    Bug 5:
+
+                Describe the bug/error:
+
+                -- getLetterGrade() method incorrectly returns "C" when score is 80 and possiblePoints set to 100
+
+                Where was the bug? (function, line number)
+
+                -- getLetterGrade() method line 39 else if statement
+
+                What test helped you find the bug?
+
+                -- getLetterGrade_shouldReturn_B_WhenPercentIs80_OrGreater()
+
+                What did you do to fix the bug?
+
+                -- modified the condition in the getLetterGrade() method to use >= instead of >
+
+    Bug 6:
+
+                    Describe the bug/error:
+
+                    -- getLetterGrade() method incorrectly returns "D" when score is 70 and possiblePoints set to 100
+
+                    Where was the bug? (function, line number)
+
+                    -- getLetterGrade() method line 40 else if statement
+
+                    What test helped you find the bug?
+
+                    -- getLetterGrade_shouldReturn_B_WhenPercentIs70_OrGreater()
+
+                    What did you do to fix the bug?
+
+                    -- modified the condition in the getLetterGrade() method to use >= instead of >
+    Bug 7:
+
+                        Describe the bug/error:
+
+                        -- getLetterGrade() method incorrectly returns "D" when score is 51 and possiblePoints set to 100
+
+                        Where was the bug? (function, line number)
+
+                        -- getLetterGrade() method line 41 else if statement
+
+                        What test helped you find the bug?
+
+                        -- getLetterGrade_shouldReturn_F_WhenPercentIsBelow60()
+
+                        What did you do to fix the bug?
+
+                        -- replaced the condition in the getLetterGrade() method else if(percent > 50) to else if(percent >= 60) and return "D"
 
 
 *** Optional / Challenge ***
