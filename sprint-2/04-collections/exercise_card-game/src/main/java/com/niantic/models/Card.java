@@ -30,6 +30,7 @@ public class Card
     public void flip() {
         isFaceUp = !isFaceUp;
     }
+
     @Override
     public String toString() {
         return color + " " + number;

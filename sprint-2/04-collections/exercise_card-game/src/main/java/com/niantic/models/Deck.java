@@ -12,32 +12,28 @@ public class Deck
         // build the deck of cards
         cards = new ArrayList<>();
 
-        int[] numbers = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int[] numbers = {1, 2, 3, 4, 5};
         String[] colors = {"Red", "Blue", "Green", "Yellow"};
 
-        for(String color : colors)
-        {
-            for(int number : numbers)
-            {
-                Card card = new Card(color,number);
-                cards.add(card);
+        for (String color : colors) {
+            for (int number : numbers) {
+                cards.add(new Card(color, number));
+                cards.add(new Card(color, number)); // Add a pair
             }
         }
+
+        shuffle();
     }
 
-    public int getCardCount()
-    {
-        return cards.size();
+    public Card takeCard() {
+        return cards.remove(0);
     }
 
-    public Card takeCard()
-    {
-        Card card = cards.removeFirst();
-        return card;
-    }
-
-    public void shuffle()
-    {
+    public void shuffle() {
         Collections.shuffle(cards);
+    }
+
+    public int getRemainingCards() {
+        return cards.size();
     }
 }
