@@ -2,38 +2,37 @@ package com.niantic.models;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class Deck
 {
-    private ArrayList<Card> cards;
+    private final ArrayList<Card> cards = new ArrayList<>();
 
-    public Deck()
-    {
-        // build the deck of cards
-        cards = new ArrayList<>();
+    public Deck() {
+        String[] suits = {"Hearts", "Diamonds", "Clubs", "Spades"};
+        String[] ranks = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"};
 
-        int[] numbers = {1, 2, 3, 4, 5};
-        String[] colors = {"Red", "Blue", "Green", "Yellow"};
-
-        for (String color : colors) {
-            for (int number : numbers) {
-                cards.add(new Card(color, number));
-                cards.add(new Card(color, number)); // Add a pair
+        for (String suit : suits) {
+            for (String rank : ranks) {
+                cards.add(new Card(rank, suit));
             }
         }
-
         shuffle();
-    }
-
-    public Card takeCard() {
-        return cards.remove(0);
     }
 
     public void shuffle() {
         Collections.shuffle(cards);
     }
 
-    public int getRemainingCards() {
-        return cards.size();
+    public Card drawCard() {
+        if (!cards.isEmpty()) {
+            return cards.remove(0);
+        }
+        return null;
+    }
+
+    public boolean isEmpty() {
+        return cards.isEmpty();
+
     }
 }
