@@ -8,9 +8,9 @@ public class Board {
     private final int rows;
     private final int columns;
 
-    public Board(int rows, int cols, List<Card> cards) {
+    public Board(int rows, int columns, List<Card> cards) {
         this.rows = rows;
-        this.columns = cols;
+        this.columns = columns;
         initializeGrid(cards);
     }
 
@@ -27,11 +27,6 @@ public class Board {
     public Card getCard(int row, int column) {
         String position = row + "," + column;
         return grid.get(position);
-    }
-
-    public boolean isValidPosition(int row, int column) {
-        String position = row + "," + column;
-        return grid.containsKey(position);
     }
 
     public boolean allCardsMatched() {
