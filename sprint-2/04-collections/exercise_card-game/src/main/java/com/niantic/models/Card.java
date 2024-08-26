@@ -2,28 +2,28 @@ package com.niantic.models;
 
 public class Card
 {
-    private String rank;
-    private String suit;
+    private final String value;
+    private boolean faceUp;
 
-    public Card() {
+    public Card(String value) {
+        this.value = value;
+        this.faceUp = false;
     }
 
-    public Card(String rank, String suit) {
-        this.rank = rank;
-        this.suit = suit;
+    public String getValue() {
+        return value;
     }
 
-    public String getRank() {
-        return rank;
+    public boolean isFaceUp() {
+        return faceUp;
     }
 
-    public String getSuit() {
-        return suit;
+    public void flip() {
+        faceUp = !faceUp; // Flips the card
     }
 
     @Override
     public String toString() {
-        return rank + " of " + suit;
+        return faceUp ? value : "X"; // Display the value if face up, or "X" if face down
     }
 }
-

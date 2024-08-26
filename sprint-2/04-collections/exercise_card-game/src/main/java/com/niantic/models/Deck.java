@@ -9,13 +9,11 @@ public class Deck
     private final ArrayList<Card> cards = new ArrayList<>();
 
     public Deck() {
-        String[] suits = {"Hearts", "Diamonds", "Clubs", "Spades"};
-        String[] ranks = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"};
-
-        for (String suit : suits) {
-            for (String rank : ranks) {
-                cards.add(new Card(rank, suit));
-            }
+        String[] values = {"A", "2", "3", "4", "5", "6", "7", "8"};
+        for (String value : values) {
+            // Add two cards of each value to make pairs
+            cards.add(new Card(value));
+            cards.add(new Card(value));
         }
         shuffle();
     }
@@ -24,15 +22,7 @@ public class Deck
         Collections.shuffle(cards);
     }
 
-    public Card drawCard() {
-        if (!cards.isEmpty()) {
-            return cards.remove(0);
-        }
-        return null;
-    }
-
-    public boolean isEmpty() {
-        return cards.isEmpty();
-
+    public List<Card> getCards() {
+        return cards;
     }
 }

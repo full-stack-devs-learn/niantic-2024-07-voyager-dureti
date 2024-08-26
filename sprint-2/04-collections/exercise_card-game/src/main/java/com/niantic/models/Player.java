@@ -3,7 +3,7 @@ package com.niantic.models;
 public class Player
 {
     private final String name;
-    private final Hand hand = new Hand();
+    private int score = 0;
 
     public Player(String name) {
         this.name = name;
@@ -13,18 +13,11 @@ public class Player
         return name;
     }
 
-    public Hand getHand() {
-        return hand;
+    public int getScore() {
+        return score;
     }
 
-    public void drawCard(Deck deck) {
-        Card drawnCard = deck.drawCard();
-        if (drawnCard != null) {
-            hand.addCard(drawnCard);
-        }
-    }
-
-    public void playCard(Card card) {
-        hand.removeCard(card);
+    public void incrementScore() {
+        score++;
     }
 }
