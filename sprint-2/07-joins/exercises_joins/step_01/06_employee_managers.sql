@@ -11,5 +11,16 @@
 
 USE northwind;
 
+SELECT 
+    CONCAT(e.first_name, ' ', e.last_name) AS Employee_Name,
+    CONCAT(m.first_name, ' ', m.last_name) AS Manager_Name
+FROM 
+    employees e
+LEFT JOIN 
+    employees m ON e.reports_to = m.employee_id
+ORDER BY 
+    Employee_Name;
+
+
 
 

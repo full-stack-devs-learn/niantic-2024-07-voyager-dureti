@@ -12,4 +12,23 @@
 
 USE northwind;
 
+SELECT c.company_name
+       , cat.category_name
+       , COUNT(*) AS order_count
+FROM 
+	categories cat
+INNER JOIN 
+	products p ON cat.category_id = p.category_id
+INNER JOIN 
+	order_details od ON p.product_id = od.product_id
+INNER JOIN 
+	orders o ON od.order_id = o.order_id
+INNER JOIN 
+	customers c ON o.customer_id = c.customer_id
+WHERE c.company_name = 'Save-a-lot Markets'
+GROUP BY 
+	c.company_name, cat.category_name
+ORDER BY 
+	order_count DESC;
+
 
