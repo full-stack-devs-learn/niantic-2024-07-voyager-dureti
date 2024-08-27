@@ -4,5 +4,13 @@
 -- (1 row) approx $605.99
 
 
+USE northwind;
+
+SELECT 
+    AVG(sales_price * quantity) AS average_sales_amount
+FROM 
+    customer_orders
+WHERE 
+    country IN ('Germany', 'Switzerland', 'France', 'Portugal', 'Finland', 'Poland', 'Ireland', 'Sweden', 'UK');
 
 

@@ -6,4 +6,17 @@
 -- (13 rows)
 
 
+USE northwind;
+
+SELECT company_name
+		, region AS state
+		, SUM(sales_price * quantity) AS total_sales
+FROM 
+    customer_orders
+WHERE 
+    country = 'USA'
+GROUP BY 
+    company_name, region
+ORDER BY 
+    state ASC, total_sales DESC;
 

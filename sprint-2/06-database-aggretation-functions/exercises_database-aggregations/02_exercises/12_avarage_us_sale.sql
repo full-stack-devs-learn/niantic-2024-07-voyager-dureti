@@ -5,4 +5,12 @@
 -- (1 row)
 
 
+USE northwind;
+
+SELECT 
+    AVG(sales_price * quantity) AS average_line_item_amount
+FROM 
+    customer_orders
+WHERE 
+    country = 'USA';
 
