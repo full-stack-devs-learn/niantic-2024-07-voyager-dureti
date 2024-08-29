@@ -18,6 +18,7 @@
 
 
 -- (top 5 rows)
+USE northwind;
 
 SELECT order_id
 	, (SELECT company_name
