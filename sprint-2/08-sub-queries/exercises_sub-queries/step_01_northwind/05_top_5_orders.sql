@@ -19,6 +19,15 @@
 
 -- (top 5 rows)
 
-USE northwind;
-
-
+SELECT order_id
+	, (SELECT company_name
+        FROM customers
+        WHERE customer_id = o.customer_id
+        ) AS company_name
+	, ( SELECT SUM(unit_price * quantity * (1 - discount))
+        FROM order_details
+        WHERE order_id = o.order_id
+		) AS sales_total
+FROM orders o
+ORDER BY sales_total DESC
+LIMIT 5;
