@@ -21,6 +21,23 @@
 -- Seafood          Carnarvon Tigers        62.5000
 
 
+
 USE northwind;
 
+SELECT 
+    c.category_name,
+    p.product_name,
+    p.unit_price
+FROM 
+    products p
+INNER JOIN 
+    categories c ON p.category_id = c.category_id
+WHERE 
+    p.unit_price = (
+        SELECT MAX(p2.unit_price)
+        FROM products p2
+        WHERE p2.category_id = p.category_id
+    )
+ORDER BY 
+    c.category_name;
 

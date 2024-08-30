@@ -16,7 +16,8 @@
 
 function calculateOrderSubtotal(quantity)
 {
-	return 0;
+	const cookieCost = 12.95
+	return quantity * cookieCost;
 }
 
 
@@ -40,7 +41,15 @@ function calculateOrderSubtotal(quantity)
 
 function calculateTax(quantity)
 {
-	return 0;
+	const taxRate = 5.75 / 100; 
+
+	// before tax
+    const subtotal = calculateOrderSubtotal(quantity);
+
+	// tax amount
+    const taxAmount = Math.round(subtotal * taxRate * 100) / 100;
+
+	return taxAmount;
 }
 
 
@@ -63,11 +72,22 @@ function calculateTax(quantity)
 
 */
 
-// create your function here
+function calculateOrderTotal(quantity){
+
+	// before tax
+	const subtotal = calculateOrderSubtotal(quantity);
+
+	// tax
+    const tax = calculateTax(quantity);
+
+	// total with tax
+    const orderTotal = subtotal + tax;
+    return Math.round(orderTotal * 100) / 100;
+}
 
 
 /*
-3.	With each order Claire needs to generate 
+4.	With each order Claire needs to generate 
 	a receipt to print for the customer
 	and to store for her records.
 
@@ -105,7 +125,17 @@ function calculateTax(quantity)
 
 */
 
-// create your function here
+function placeOrder(customerName, quantity) {
+    const orderPlaced = {
+        customer: customerName,
+        quantity: quantity,
+        subtotal: calculateOrderSubtotal(quantity),
+        tax: calculateTax(quantity),
+        total: calculateOrderTotal(quantity)
+    };
+
+    return orderPlaced;
+}
 
 
 /*
@@ -127,4 +157,17 @@ function calculateTax(quantity)
 
 */
 
-// create your function here
+function calculateCookiesNeeded(aStudent, bStudent, otherStudent){
+	// total number of cookies for each group
+    const aCookies = aStudent * 4;
+    const bCookies = bStudent * 3;
+    const otherCookies = otherStudent * 2;
+
+    // total number of cookies required
+    const totalCookies = aCookies + bCookies + otherCookies;
+
+    // number of dozens needed (rounding up to the nearest dozen)
+    const dozensNeeded = Math.ceil(totalCookies / 12);
+
+    return dozensNeeded;
+}
