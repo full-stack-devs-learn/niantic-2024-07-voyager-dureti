@@ -30,12 +30,12 @@ function addListItem(item, parent)
 
     // Added click event listener to mark item complete
     div.addEventListener('click', () => {
-        markComplete(div, item);
+        markItemComplete(div, item);
     });
 
     // Added double-click event listener to mark item incomplete
     div.addEventListener('dblclick', () => {
-        markInComplete(div, item);
+        markItemInComplete(div, item);
     });
 
 
