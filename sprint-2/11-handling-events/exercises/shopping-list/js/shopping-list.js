@@ -68,7 +68,7 @@ function addQuantity(item, parent)
 
 // Mark individual item complete
 
-function markComplete(item)
+function markItemComplete(item)
 {
     if (!item.classList.contains("complete")) 
     {
@@ -80,7 +80,7 @@ function markComplete(item)
 
 // Mark item incomplete
 
-function markInComplete(item)
+function markItemInComplete(item)
 {
     if (item.classList.contains("complete")) 
     {
