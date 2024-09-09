@@ -1,22 +1,35 @@
+let categoryId = 1;
+
 document.addEventListener("DOMContentLoaded", () => {
- loadPage()
+    const categoryOption = document.getElementById("category");
 
+    categoryOption.addEventListener("change", () => {
+        categoryId = categoryOption.value;
+        loadPage();
+ });
+
+
+    categoryId = categoryOption.value;
+    loadPage();
 });
-function loadPage()
-{
-    const url = `/api/products/category/${categoryId}`;
-    fetch(url).then(response => {
-        return response.json();
-    })
-        .then(data => {
-            const tbody = document.getElementById("product-container");
-            tbody.innerHTML = "";
 
-            data.forEach(product => {
-                displayProduct(product, tbody)
-            })
+function loadPage() {
+    const container = document.getElementById("product-container");
+    container.innerHTML = "";
+
+    const url = `/products/category/${categoryId}`;
+
+    fetch(url)
+        .then(response => {
+            if (response.status === 200) {
+                return response.text();
+            }
+            throw new Error(response.statusText);
+        })
+        .then(data => {
+            container.innerHTML = data;
         })
         .catch(error => {
-            console.log(error);
-        })
+            console.error(error);
+        });
 }

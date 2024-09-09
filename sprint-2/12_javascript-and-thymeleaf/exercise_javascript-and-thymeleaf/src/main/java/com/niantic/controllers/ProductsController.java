@@ -30,9 +30,25 @@ public class ProductsController {
         return "products/index";
     }
 
+    // map to products fragments (obtain products by categoryId)
+    @GetMapping("/products/category/{categoryId}")
+    public String loadProductPage(Model model,@PathVariable int categoryId)
+    {
+        var products = productDao.getProductsByCategory(categoryId);
+        var category = categoryDao.getCategoryById(categoryId);
+        var categories = categoryDao.getCategories();
+
+        model.addAttribute("categories", categories);
+        model.addAttribute("currentCategory", category);
+        model.addAttribute("products", products);
+        return "products/fragments/product-table-list";
+    }
+
+
     // details page
     @GetMapping("/products/{id}")
-    public String getProduct(Model model, @PathVariable int id) {
+    public String getProduct(Model model, @PathVariable int id)
+    {
         var product = productDao.getProduct(id);
 
         if (product == null) {
@@ -55,14 +71,6 @@ public class ProductsController {
         return "products/add";
     }
 
-    @GetMapping("/products/category/{categoryId}")
-    public String getProductByCategory(Model model, @PathVariable int categoryId) {
-        ArrayList<Product> products;
-        products = productDao.getProductsByCategory(categoryId);
-
-        model.addAttribute("products", products);
-        return "/products/fragments/product-table-list";
-    }
 
     @PostMapping("/products/new")
     public String saveProduct(Model model, @Valid @ModelAttribute("product") Product product, BindingResult result)

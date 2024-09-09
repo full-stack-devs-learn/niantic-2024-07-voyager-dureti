@@ -9,15 +9,20 @@
 
     <link rel="stylesheet" href="css/styles.css">
 
+
 </head>
 <body>
+<script src="/js/products-list.js"></script>
+
 <div th:replace="fragments/header.html :: nav"></div>
 <main class="container mt-4">
-<h4>Products:
-    <select name="category" id="category" class="form-select">
-        <option th:each="category:${categories}" th:value="${category.categoryId}" th:text="${category.categoryName}" th:selected="${category.categoryId} == ${currentCategory.categoryId}"></option>
-    </select>
-</h4>
+    <h4>Products:
+        <select name="category" id="category" class="form-select">
+            <option th:each="category:${categories}" th:value="${category.categoryId}" th:text="${category.categoryName}" th:selected="${category.categoryId} == ${currentCategory.categoryId}"></option>
+        </select>
+    </h4>
+
+    </h4>
 
 <a th:href="@{/products/new}">New</a>
 <table class="table table-striped">
@@ -32,6 +37,8 @@
     <tbody id="product-container">
 
     </tbody>
+
+
 </table>
 </main>
 </body>
