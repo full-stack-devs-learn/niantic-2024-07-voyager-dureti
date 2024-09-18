@@ -40,9 +40,33 @@ public class GradingApplication implements Runnable
         }
     }
 
-    private void displayAllFiles()
-    {
+    private void displayAllFiles() {
         // todo: 1 - get and display all student file names
+
+        System.out.println();
+        System.out.println("All Available Student Files: ");
+        System.out.println();
+
+        try
+        {
+            String[] fileNames = gradesService.getFileNames();
+
+            if (fileNames != null && fileNames.length > 0)
+            {
+                for (String fileName : fileNames)
+                {
+                    System.out.println(fileName);
+                }
+            }
+            else
+            {
+                System.out.println("No files found.");
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println("An error occurred while retrieving file names: " + e.getMessage());
+        }
     }
 
     private void displayFileScores()
