@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class UserInput
 {
+    private final Scanner scanner = new Scanner(System.in);
     protected static Scanner in = new Scanner(System.in);
 
     public static int homeScreenSelection()
@@ -34,5 +35,16 @@ public class UserInput
     {
         System.out.println();
         System.out.println(message);
+    }
+
+    public String getStringInput(String message)
+    {
+        System.out.print(message);
+        return scanner.nextLine();
+    }
+
+    public int getIntInput(String message)
+    {
+        return Integer.parseInt(getStringInput(message));
     }
 }
