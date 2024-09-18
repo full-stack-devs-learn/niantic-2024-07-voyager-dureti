@@ -68,44 +68,55 @@ public class GradingApplication implements Runnable {
         // todo: 2 - allow the user to select a file name
         // Get all file names from the GradesService
 
-        String[] fileNames = gradesService.getFileNames();
-
-        if (fileNames != null && fileNames.length > 0)
+        try
         {
-            System.out.println("Select a file by entering its number:");
-            for (int i = 0; i < fileNames.length; i++)
+            String[] fileNames = gradesService.getFileNames();
+
+            if (fileNames != null && fileNames.length > 0)
             {
-                System.out.println((i + 1) + ") " + fileNames[i]);
-            }
-
-            int choice = ui.getIntInput("Enter the number corresponding to the file: ") - 1;
-
-            if (choice >= 0 && choice < fileNames.length)
-            {
-                String selectedFile = fileNames[choice];
-
-                List<Assignment> assignments = gradesService.getAssignments(selectedFile);
-
-                if (!assignments.isEmpty())
+                System.out.println("Select a file by entering its number:");
+                for (int i = 0; i < fileNames.length; i++)
                 {
-                    for (Assignment assignment : assignments)
+                    System.out.println((i + 1) + ") " + fileNames[i]);
+                }
+
+                int fileIndex = ui.getIntInput("Enter the number corresponding to the file: ") - 1;
+
+                if (fileIndex >= 0 && fileIndex < fileNames.length)
+                {
+                    String selectedFile = fileNames[fileIndex];
+
+                    List<Assignment> assignments = gradesService.getAssignments(selectedFile);
+
+                    if (!assignments.isEmpty())
                     {
-                        System.out.println(assignment);
+                        for (Assignment assignment : assignments)
+                        {
+                            System.out.println(assignment);
+                        }
+                    }
+                    else
+                    {
+                        System.out.println("No assignments found for this student.");
                     }
                 }
                 else
                 {
-                    System.out.println("No assignments found for this student.");
+                    System.out.println("Invalid selection. Please try again.");
                 }
             }
             else
             {
-                System.out.println("Invalid selection. Please try again.");
+                System.out.println("No files available to select.");
             }
         }
-        else
+        catch (NumberFormatException e)
         {
-            System.out.println("No files available to select.");
+            System.out.println("Invalid input. Please enter a valid number.");
+        }
+        catch (Exception e)
+        {
+            System.out.println("Error occurred: " + e.getMessage());
         }
     }
 
@@ -113,6 +124,62 @@ public class GradingApplication implements Runnable {
     {
         // todo: 3 - allow the user to select a file name
         // load all student assignment scores from the file - display student statistics (low score, high score, average score)
+
+        try
+        {
+            String[] fileNames = gradesService.getFileNames();
+
+            if (fileNames != null && fileNames.length > 0)
+            {
+                System.out.println("Select a file by entering its number:");
+                for (int i = 0; i < fileNames.length; i++)
+                {
+                    System.out.println((i + 1) + ") " + fileNames[i]);
+                }
+
+                int fileIndex = ui.getIntInput("Enter the number corresponding to the file: ") - 1;
+                System.out.println();
+
+                if (fileIndex >= 0 && fileIndex < fileNames.length)
+                {
+                    String selectedFile = fileNames[fileIndex];
+
+                    List<Assignment> assignments = gradesService.getAssignments(selectedFile);
+
+                    if (!assignments.isEmpty())
+                    {
+
+                        AssignmentStatistics stats = new AssignmentStatistics(selectedFile, assignments);
+
+                        System.out.println("Student Name:     " + stats.getStudentName());
+                        System.out.println();
+                        System.out.println("Low Score:        " + stats.getLowestScore());
+                        System.out.println("High Score:       " + stats.getHighestScore());
+                        System.out.println("Average Score:    " + stats.getAvgScore());
+                    }
+                    else
+                    {
+                        System.out.println("No assignments found for this student.");
+                    }
+                }
+                else
+                {
+                    System.out.println("Invalid selection. Please try again.");
+                }
+            }
+            else
+            {
+                System.out.println("No files available to select.");
+            }
+        }
+        catch (NumberFormatException e)
+        {
+            System.out.println("Invalid input. Please enter a valid number.");
+        }
+        catch (Exception e)
+        {
+            System.out.println("Error occurred: " + e.getMessage());
+        }
 
     }
 

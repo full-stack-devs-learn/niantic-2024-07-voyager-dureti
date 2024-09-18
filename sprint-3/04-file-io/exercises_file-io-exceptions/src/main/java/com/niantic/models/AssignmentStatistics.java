@@ -11,6 +11,14 @@ public class AssignmentStatistics {
     public AssignmentStatistics(String studentName, List<Assignment> studentScores) {
         this.studentName = studentName;
         this.studentScores = studentScores;
+
+        if (!studentScores.isEmpty()) {
+            Assignment firstAssignment = studentScores.get(0);
+            this.studentName = firstAssignment.getFirstName() + " " + firstAssignment.getLastName();
+        } else {
+            this.studentName = "Unknown Student";
+        }
+
     }
 
     public String getStudentName() {
