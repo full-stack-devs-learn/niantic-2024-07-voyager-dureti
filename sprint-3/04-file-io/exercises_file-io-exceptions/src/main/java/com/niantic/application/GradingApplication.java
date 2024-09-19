@@ -192,7 +192,7 @@ public class GradingApplication implements Runnable {
 
     }
 
-    private void listFiles() {
+    private void displayFiles() {
         String[] files = gradesService.getFileNames();
         List<String> studentNames = Arrays.stream(files)
                 .map(this::parseStudentName)
@@ -200,31 +200,10 @@ public class GradingApplication implements Runnable {
         ui.displayFiles(studentNames);
     }
 
-    private void listAllFiles() {
-        System.out.println();
-        System.out.println("All Available Student Files: ");
-        System.out.println();
-
-        try {
-            String[] fileNames = gradesService.getFileNames();
-
-            if (fileNames != null && fileNames.length > 0) {
-                for (String fileName : fileNames) {
-                    String studentName = parseStudentName(fileName);
-                    System.out.println("File: " + fileName + " - Student: " + studentName);
-                }
-            } else {
-                System.out.println("No files found.");
-            }
-        } catch (Exception e) {
-            System.out.println("An error occurred while retrieving file names: " + e.getMessage());
-        }
-    }
-
     public void createStudentSummaryReport()
     {
         {
-            listFiles();
+            displayFiles();
             int choice = ui.getIntInput("Please select a file: ") - 1;
 
             // Fetch the selected file
@@ -251,7 +230,7 @@ public class GradingApplication implements Runnable {
     }
 
     public void createAllStudentsReport() {
-        listAllFiles();
+       displayAllFiles();
 
         String[] files = gradesService.getFileNames();
 

@@ -54,7 +54,6 @@ public class ReportService {
 
             out.println("-".repeat(60));
 
-            System.out.println("Report successfully created: " + fileName);
         } catch (FileNotFoundException e) {
             System.err.println("Error creating report file: " + e.getMessage());
         }
