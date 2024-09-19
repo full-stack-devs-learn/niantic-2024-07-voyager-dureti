@@ -1,5 +1,6 @@
 package com.niantic.application;
 
+import com.niantic.models.AllStudentsStatistics;
 import com.niantic.models.Assignment;
 import com.niantic.models.AssignmentStatistics;
 import com.niantic.services.GradesFileService;
@@ -33,9 +34,12 @@ public class GradingApplication implements Runnable {
                     createStudentSummaryReport();
                     break;
                 case 5:
-                    displayAllStudentStatistics();
+                    createAllStudentsReport();
                     break;
                 case 6:
+                    displayAllStudentStatistics();
+                    break;
+                case 7:
                     displayAssignmentStatistics();
                     break;
                 case 0:
@@ -196,31 +200,85 @@ public class GradingApplication implements Runnable {
         ui.displayFiles(studentNames);
     }
 
+    private void listAllFiles() {
+        System.out.println();
+        System.out.println("All Available Student Files: ");
+        System.out.println();
+
+        try {
+            String[] fileNames = gradesService.getFileNames();
+
+            if (fileNames != null && fileNames.length > 0) {
+                for (String fileName : fileNames) {
+                    String studentName = parseStudentName(fileName);
+                    System.out.println("File: " + fileName + " - Student: " + studentName);
+                }
+            } else {
+                System.out.println("No files found.");
+            }
+        } catch (Exception e) {
+            System.out.println("An error occurred while retrieving file names: " + e.getMessage());
+        }
+    }
+
     public void createStudentSummaryReport()
     {
-        listFiles();
-        int choice = ui.getIntInput("Please select a file: ") - 1;
+        {
+            listFiles();
+            int choice = ui.getIntInput("Please select a file: ") - 1;
 
-        // Fetch the selected file
-        var files = gradesService.getFileNames();
-        String fileName = files[choice];
-        var studentName = parseStudentName(fileName);
+            // Fetch the selected file
+            var files = gradesService.getFileNames();
+            String fileName = files[choice];
+            var studentName = parseStudentName(fileName);
 
-        // Fetch student assignments
-        List<Assignment> assignments = gradesService.getAssignments(fileName);
+            // Fetch student assignments
+            List<Assignment> assignments = gradesService.getAssignments(fileName);
 
-        // Check if the assignments list is empty
-        if (assignments.isEmpty()) {
-            System.out.println("No assignments found for " + studentName);
+            // Check if the assignments list is empty
+            if (assignments.isEmpty()) {
+                System.out.println("No assignments found for " + studentName);
+                return;
+            }
+
+            AssignmentStatistics statistics = new AssignmentStatistics(studentName, assignments);
+
+            ReportService service = new ReportService();
+            service.createStudentSummaryReport(statistics);
+
+            System.out.println("Student summary report created for " + studentName);
+        }
+    }
+
+    public void createAllStudentsReport() {
+        listAllFiles();
+
+        String[] files = gradesService.getFileNames();
+
+        if (files == null || files.length == 0) {
+            System.out.println("No student files found.");
             return;
         }
 
-        AssignmentStatistics statistics = new AssignmentStatistics(studentName, assignments);
+        List<Assignment> allAssignments = gradesService.getAllAssignments(files);
 
-        ReportService service = new ReportService();
-        service.createStudentSummaryReport(statistics);
+        if (allAssignments.isEmpty()) {
+            System.out.println("No assignments found for any students.");
+            return;
+        }
 
-        System.out.println("Student summary report created for " + studentName);
+        AllStudentsStatistics statistics = new AllStudentsStatistics(allAssignments, files.length);
+        ReportService reportService = new ReportService();
+
+        reportService.createAllStudentsReport(
+                statistics.getTotalStudents(),
+                statistics.getTotalAssignments(),
+                statistics.getLowestScore(),
+                statistics.getHighestScore(),
+                statistics.getAvgScore()
+        );
+
+        System.out.println("All Students report created successfully.");
     }
 
 

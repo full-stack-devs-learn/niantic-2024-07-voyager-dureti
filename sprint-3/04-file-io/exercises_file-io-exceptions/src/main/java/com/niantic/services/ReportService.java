@@ -10,8 +10,7 @@ import java.time.format.DateTimeFormatter;
 
 public class ReportService {
 
-    public void createStudentSummaryReport (AssignmentStatistics statistics)
-    {
+    public void createStudentSummaryReport (AssignmentStatistics statistics) {
         LocalDate today = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy_MM_dd");
         String fileName = "reports/" + today.format(formatter) + "_" + statistics.getStudentName().replace(" ", "_") + ".txt";
@@ -31,4 +30,34 @@ public class ReportService {
             System.err.println("Error creating report file: " + e.getMessage());
         }
     }
+
+    // create an "All Students" report
+    public void createAllStudentsReport(int totalStudents, int totalAssignments, int lowScore, int highScore, double avgScore) {
+        LocalDate today = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy_MM_dd");
+        String fileName = "reports/" + today.format(formatter) + "_all_students.txt";
+
+        File file = new File(fileName);
+        try (PrintWriter out = new PrintWriter(file)) {
+            out.println("All Assignments");
+            out.println("-".repeat(60));
+
+            // Total students and total assignments
+            out.printf("Total Students                             %d\n", totalStudents);
+            out.printf("Total Assignments                          %d\n", totalAssignments);
+            out.println("-".repeat(60));
+
+            // Lowest, highest, and average scores
+            out.printf("Low Score                                  %d\n", lowScore);
+            out.printf("High Score                                 %d\n", highScore);
+            out.printf("Average Score                              %.2f\n", avgScore);
+
+            out.println("-".repeat(60));
+
+            System.out.println("Report successfully created: " + fileName);
+        } catch (FileNotFoundException e) {
+            System.err.println("Error creating report file: " + e.getMessage());
+        }
+    }
+
 }
