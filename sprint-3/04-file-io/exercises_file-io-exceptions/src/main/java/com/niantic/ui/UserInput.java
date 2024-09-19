@@ -1,5 +1,6 @@
 package com.niantic.ui;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class UserInput
@@ -19,9 +20,13 @@ public class UserInput
         System.out.println("  2) Student: display all scores");
         System.out.println("  3) Student: display average score");
         System.out.println();
+        System.out.println("  ------------ Report File ------------");
+        System.out.println("  4) Student: create student summary report");
+        System.out.println("  5) Student: create All Students Report");
+        System.out.println();
         System.out.println("  ---------- Challenge All Files ----------");
-        System.out.println("  5) All Students: display average score");
-        System.out.println("  6) All Assignments: display average score");
+        System.out.println("  6) All Students: display average score");
+        System.out.println("  7) All Assignments: display average score");
         System.out.println();
         System.out.println("  0) Exit");
 
@@ -46,5 +51,13 @@ public class UserInput
     public int getIntInput(String message)
     {
         return Integer.parseInt(getStringInput(message));
+    }
+
+    public void displayFiles(List<String> files) {
+        System.out.println();
+        int count = 0;
+        for (var file : files) {
+            System.out.println(++count + ") " + file);
+        }
     }
 }

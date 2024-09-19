@@ -4,8 +4,10 @@ import com.niantic.models.Assignment;
 import com.niantic.models.AssignmentStatistics;
 import com.niantic.services.GradesFileService;
 import com.niantic.services.GradesService;
+import com.niantic.services.ReportService;
 import com.niantic.ui.UserInput;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -28,9 +30,12 @@ public class GradingApplication implements Runnable {
                     displayStudentAverages();
                     break;
                 case 4:
-                    displayAllStudentStatistics();
+                    createStudentSummaryReport();
                     break;
                 case 5:
+                    displayAllStudentStatistics();
+                    break;
+                case 6:
                     displayAssignmentStatistics();
                     break;
                 case 0:
@@ -182,6 +187,42 @@ public class GradingApplication implements Runnable {
         }
 
     }
+
+    private void listFiles() {
+        String[] files = gradesService.getFileNames();
+        List<String> studentNames = Arrays.stream(files)
+                .map(this::parseStudentName)
+                .toList();
+        ui.displayFiles(studentNames);
+    }
+
+    public void createStudentSummaryReport()
+    {
+        listFiles();
+        int choice = ui.getIntInput("Please select a file: ") - 1;
+
+        // Fetch the selected file
+        var files = gradesService.getFileNames();
+        String fileName = files[choice];
+        var studentName = parseStudentName(fileName);
+
+        // Fetch student assignments
+        List<Assignment> assignments = gradesService.getAssignments(fileName);
+
+        // Check if the assignments list is empty
+        if (assignments.isEmpty()) {
+            System.out.println("No assignments found for " + studentName);
+            return;
+        }
+
+        AssignmentStatistics statistics = new AssignmentStatistics(studentName, assignments);
+
+        ReportService service = new ReportService();
+        service.createStudentSummaryReport(statistics);
+
+        System.out.println("Student summary report created for " + studentName);
+    }
+
 
     private void displayAllStudentStatistics()
     {
