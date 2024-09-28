@@ -1,16 +1,52 @@
-// code here is the logic to manage the home (or people) page
-let peopleService;
+let peopleService = new PeopleService();
+let currentPage = 1;
 
 document.addEventListener('DOMContentLoaded', () => {
-    peopleService = new PeopleService();
+    displayPeople(currentPage);
 
-    // add logic to display a list of people from the SWAPI
-    // note that it will defautl to displaying 10 people
-    // at a time.
+    const previousButton = createButton('Previous', () => changePage(-1));
+    previousButton.disabled = true; 
 
-    // look at the API and discover how you can access
-    // page 2 or page 3
+    const nextButton = createButton('Next', () => changePage(1));
+    document.body.append(previousButton, nextButton);
+});
 
-    // can you add previous and next buttons to the page
-    // to navigate between pages?
-})
+async function displayPeople(page) {
+    try {
+        console.log(`Fetching data for page: ${page}`);
+        const peopleList = await peopleService.getPeople(page);
+        console.log(`Data received for page ${page}:`, peopleList);
+
+        const listContainer = document.getElementById('people-list') || document.createElement('ul');
+        listContainer.id = 'people-list';
+        listContainer.innerHTML = ''; 
+
+        peopleList.forEach(person => {
+            const listItem = document.createElement('li');
+            listItem.textContent = person.name;
+            listContainer.appendChild(listItem);
+        });
+
+        document.body.appendChild(listContainer);
+    } catch (error) {
+        console.error('Error displaying people:', error);
+        alert('Failed to load people from SWAPI.');
+    }
+}
+
+async function changePage(offset) {
+    currentPage += offset; 
+    console.log(`Changing to page: ${currentPage}`);
+    await displayPeople(currentPage);
+
+    const previousButton = document.querySelector('button:nth-of-type(1)');
+    previousButton.disabled = currentPage === 1; 
+}
+
+
+function createButton(text, clickHandler) {
+    const button = document.createElement('button');
+    button.innerText = text;
+    button.addEventListener('click', clickHandler);
+    return button;
+}
